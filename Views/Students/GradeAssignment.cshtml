@@ -1,0 +1,24 @@
+﻿@model UserAssignment
+
+@{
+    ViewBag.Title = "Grade Assignment";
+}
+
+<h2>Grade Assignment for @Model.User.UserName</h2>
+
+<form method="post" action="@Url.Action("GradeAssignment")">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label asp-for="Assignment.Name">Assignment Name</label>
+        <input type="text" asp-for="Assignment.Name" readonly class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SubmissionDate">Submission Date</label>
+        <input type="text" asp-for="SubmissionDate" readonly class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Score">Score</label>
+        <input type="number" asp-for="Score" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Grade</button>
+</form>

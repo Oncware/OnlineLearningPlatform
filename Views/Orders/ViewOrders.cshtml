@@ -1,0 +1,30 @@
+﻿@model IEnumerable<JustLearn1.Models.OrderDetail>
+
+@{
+    ViewData["Title"] = "Orders for " + ViewBag.ProductName;
+}
+<br />
+<br/>
+<br/>
+<br/>
+<br />
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th> <!-- Başlık değişti -->
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var orderDetail in Model)
+        {
+            <tr>
+                <!-- Kullanıcı adı gösteriliyor, null kontrolü ile -->
+                <td>@(orderDetail.Username ?? "Unknown User")</td>
+                <td>@Html.DisplayFor(modelItem => orderDetail.Price)</td>
+            </tr>
+        }
+    </tbody>
+</table>

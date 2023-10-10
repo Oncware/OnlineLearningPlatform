@@ -1,0 +1,33 @@
+﻿@model List<JustLearn1.Models.Product>
+
+<h1>My Courses</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Detail</th>
+            <th>Total Assignments</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@product.ImageUrl" alt="@product.Name" width="100" />
+                </td>
+                <td>@product.Name</td>
+                <td>@Html.Raw(product.Detail)</td>
+                <td>@(product.Assignment?.Count ?? 0)</td>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@product.Id" class="btn btn-primary">
+                        View Detail
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

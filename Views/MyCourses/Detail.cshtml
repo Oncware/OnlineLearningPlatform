@@ -1,0 +1,39 @@
+﻿@model Product
+<br/>
+<br/>
+<br />
+<br />
+<br />
+
+<div class="course-detail-container" style="margin: 40px;">
+    <div class="course-header" style="text-align: center;">
+        <img src="@Model.ImageUrl" alt="@Model.Name" width="300" style="border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);" />
+        <h1 style="margin-top: 20px; font-size: 2em; font-weight: bold;">@Model.Name</h1>
+        <p style="color: #666; font-size: 1.1em;">@Html.Raw(Model.Detail)</p>
+    </div>
+
+    <h2 style="margin-top: 40px; font-size: 1.6em;">Assignments</h2>
+    @if (Model.Assignment != null && Model.Assignment.Any())
+    {
+        <div class="assignments-list" style="margin-top: 20px;">
+            @foreach (var assignment in Model.Assignment)
+            {
+                <div class="assignment-item" style="margin-bottom: 20px; background-color: #f8f8f8; border-radius: 5px; padding: 20px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
+                    <h3 style="font-size: 1.5em; margin-bottom: 10px;">@assignment.Name</h3>
+                    <p style="color: #888; margin-bottom: 20px;">Due: @assignment.DueDate.ToShortDateString()</p>
+                    <a asp-action="StartAssignment" asp-route-assignmentId="@assignment.AssignmentID" class="btn btn-primary">
+                        Start Assignment
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p style="color: #666;">No assignments available for this course.</p>
+    }
+
+    <div class="back-link" style="margin-top: 40px;">
+        <a asp-action="Index" style="color: #007bff; text-decoration: underline;">Back to My Courses</a>
+    </div>
+</div>

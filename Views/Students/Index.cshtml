@@ -1,0 +1,29 @@
+﻿@model IEnumerable<StudentViewModel>
+
+@{
+    ViewBag.Title = "Students";
+}
+<br/>
+<br/>
+<br/>
+<br />
+
+<h2>Your Students</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Process (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.UserName</td>
+                <td>@student.Process.ToString("0.00")</td>
+            </tr>
+        }
+    </tbody>
+</table>

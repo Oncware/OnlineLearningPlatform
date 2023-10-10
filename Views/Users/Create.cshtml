@@ -1,0 +1,58 @@
+﻿@model JustLearn1.Models.Users_in_Role
+
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <form asp-action="Create" method="post">
+
+                <div class="form-group">
+                    <label asp-for="Username" class="form-label">Username</label>
+                    <input class="form-control" asp-for="Username" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input type="email" class="form-control" asp-for="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <input type="password" class="form-control" asp-for="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Role" class="form-label">Role</label>
+                    <select asp-for="Role" asp-items="@(ViewData["Roles"] as SelectList)" class="form-select">
+                        <option value="">Select a role</option>
+                    </select>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a href="@Url.Action("Index", "Users")" class="btn btn-secondary">Back to Admin Dashboard</a>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

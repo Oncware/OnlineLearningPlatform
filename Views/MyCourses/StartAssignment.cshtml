@@ -1,0 +1,33 @@
+﻿@model Assignment
+
+<div class="assignment-detail-container" style="margin: 40px;">
+    <div class="assignment-header" style="text-align: center;">
+        <h1 style="margin-top: 20px; font-size: 2em; font-weight: bold;">@Model.Name</h1>
+        <p style="color: #666; font-size: 1.2em;">@Html.Raw(Model.Detail)</p>
+        <p style="color: #888; font-size: 1em;">Due: @Model.DueDate.ToString("dddd, MMMM d, yyyy")</p>
+    </div>
+
+    <div class="assignment-body" style="margin-top: 40px;">
+        <p style="color: #555; font-size: 1.2em;">
+            Please make sure to review all the instructions and guidelines carefully before starting your assignment. Ensure that you adhere to all the specified guidelines to avoid any loss of marks.
+        </p>
+        <p style="color: #555; font-size: 1.2em;">
+            If you have any questions or concerns, please contact your instructor.
+        </p>
+
+        <form method="post" asp-action="SubmitAssignment">
+            <input type="hidden" name="AssignmentId" value="@Model.AssignmentID" />
+            <div class="form-group">
+                <label for="userComment">Your Comment:</label>
+                <textarea name="UserComment" id="userComment" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="font-size: 1.2em; padding: 10px 20px; margin-top: 20px;">
+                Post Assignment
+            </button>
+        </form>
+    </div>
+
+    <div class="back-link" style="margin-top: 40px;">
+        <a asp-action="Detail" asp-route-id="@Model.ProductID" style="color: #007bff; text-decoration: underline;">Back to Course Detail</a>
+    </div>
+</div>

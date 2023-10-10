@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Assignment>
+
+@{
+    ViewData["Title"] = "Assignments for " + ViewBag.ProductName;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Detail</th>
+            <th>Due Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var assignment in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => assignment.Name)</td>
+                <td>@Html.DisplayFor(modelItem => assignment.Detail)</td>
+                <td>@Html.DisplayFor(modelItem => assignment.DueDate)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

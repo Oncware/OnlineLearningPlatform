@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Product>
+
+<div class="row" data-aos="zoom-in" data-aos-delay="100">
+                @foreach(var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="course-item">
+                            <a asp-controller="Products" asp-action="Detail" asp-route-id="@item.Id">
+                            <img src="@item.ImageUrl" class="img-fluid" alt="...">
+                            </a>
+                            <div class="course-content">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h4>"@(item.Category?.Name ?? "No Category")"</h4>
+
+                                <p class="price">@item.Price $</p>
+                                </div>
+
+                                <h3><a asp-controller="Products" asp-action="Detail" asp-route-id="@item.Id">@item.Name</a></h3>
+                                <p>@Html.Raw(item.Detail)</p>
+                                <div class="trainer d-flex justify-content-between align-items-center">                            
+                                    <div class="trainer-rank d-flex align-items-center">
+                                        <i class="bx bx-user"></i>&nbsp;50
+                                        &nbsp;&nbsp;
+                                        <i class="bx bx-heart"></i>&nbsp;65
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-to-cart-container">
+                                <a asp-controller="ShoppingCart" asp-action="AddToShoppingCart" asp-route-pId="@item.Id" button class="btn btn-primary add-to-cart">Add to Cart</a>
+                            </div>
+                        </div>
+                    </div> <!-- End Course Item-->
+                }

@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Control User</h3>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-primary" asp-action="Create" asp-controller="Users">Create User</a>
+                        <a class="btn btn-primary" asp-action="UsersWithRoles" asp-controller="Users">List All User For Edit and Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3>Control Courses and Categories</h3>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <!-- Replace with your actual actions and controllers -->
+                        <a class="btn btn-primary" asp-action="Index" asp-controller="Category">Category</a>
+                        <a class="btn btn-primary" asp-action="Admin" asp-controller="Products"> Manage Products</a>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
